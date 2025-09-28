@@ -1,0 +1,137 @@
+<template>
+    <lightning-card title="Submit Quote for Approval" icon-name="standard:approval">
+        <div class="slds-p-horizontal_medium slds-p-vertical_small">
+            
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="slds-text-align_center slds-p-vertical_large">
+                    <lightning-spinner 
+                        alternative-text="Validating quote..." 
+                        size="medium">
+                    </lightning-spinner>
+                    <p class="slds-text-color_weak slds-p-top_small">
+                        Validating quote details...
+                    </p>
+                </div>
+            </template>
+
+            <!-- Quote Details and Validation -->
+            <template if:false={isLoading}>
+                
+                <!-- Quote Information -->
+                <template if:true={quote}>
+                    <div class="slds-section slds-is-open slds-p-bottom_medium">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Quote Details">
+                                Quote Details
+                            </span>
+                        </h3>
+                        <div class="slds-section__content">
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Quote Name:</dt>
+                                        <dd class="slds-item_detail slds-truncate">{quote.Name}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Status:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <lightning-badge label={quote.Status} variant="inverse"></lightning-badge>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Account:</dt>
+                                        <dd class="slds-item_detail slds-truncate">{quote.Account.Name}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Ship To Contact:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <template if:true={quote.ShipToContact}>
+                                                <lightning-formatted-text value={quote.ShipToContact.Name}></lightning-formatted-text>
+                                                <template if:true={quote.ShipToContact.Email}>
+                                                    <br>
+                                                    <lightning-formatted-email value={quote.ShipToContact.Email}></lightning-formatted-email>
+                                                </template>
+                                            </template>
+                                            <template if:false={quote.ShipToContact}>
+                                                <span class="slds-text-color_error">Not specified</span>
+                                            </template>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Validation Errors -->
+                <template if:true={hasValidationErrors}>
+                    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                        <span class="slds-assistive-text">Error</span>
+                        <h2>
+                            <lightning-icon 
+                                icon-name="utility:error" 
+                                alternative-text="Error" 
+                                size="x-small"
+                                class="slds-m-right_x-small">
+                            </lightning-icon>
+                            Validation Errors
+                        </h2>
+                        <div class="slds-notify__content">
+                            <p>{errorMessage}</p>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Success Message -->
+                <template if:false={hasValidationErrors}>
+                    <template if:true={quote}>
+                        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="alert">
+                            <span class="slds-assistive-text">Success</span>
+                            <h2>
+                                <lightning-icon 
+                                    icon-name="utility:success" 
+                                    alternative-text="Success" 
+                                    size="x-small"
+                                    class="slds-m-right_x-small">
+                                </lightning-icon>
+                                Ready for Approval
+                            </h2>
+                            <div class="slds-notify__content">
+                                <p>This quote has passed all validation checks and is ready to be submitted for approval.</p>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+
+                <!-- Action Buttons -->
+                <div class="slds-p-top_medium">
+                    <div class="slds-float_right">
+                        <lightning-button 
+                            label="Cancel" 
+                            variant="neutral"
+                            onclick={handleCancel}
+                            class="slds-m-right_small">
+                        </lightning-button>
+                        <lightning-button 
+                            label="Submit for Approval" 
+                            variant={submitButtonVariant}
+                            icon-name="utility:approval"
+                            onclick={handleSubmitForApproval}
+                            disabled={isSubmitDisabled}
+                            class={isSubmitting}>
+                        </lightning-button>
+                    </div>
+                </div>
+
+                <!-- Loading indicator for submit action -->
+                <template if:true={isSubmitting}>
+                    <div class="slds-p-top_small">
+                        <lightning-spinner 
+                            alternative-text="Submitting for approval..." 
+                            size="small">
+                        </lightning-spinner>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

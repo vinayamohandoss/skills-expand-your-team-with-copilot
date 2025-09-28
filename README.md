@@ -12,16 +12,22 @@ force-app/main/default/
 │   ├── AccountController.*     # Controller class for account operations
 │   ├── AccountControllerTest.* # Test class for AccountController
 │   ├── AccountService.*        # Service class for business logic
-│   └── AccountServiceTest.*    # Test class for AccountService
+│   ├── AccountServiceTest.*    # Test class for AccountService
+│   ├── QuoteController.*       # Controller class for quote operations
+│   └── QuoteControllerTest.*   # Test class for QuoteController
 ├── lwc/                       # Lightning Web Components
 │   ├── accountList/           # Account list management component
 │   │   ├── accountList.html   # Component template
 │   │   ├── accountList.js     # Component JavaScript controller
 │   │   └── accountList.js-meta.xml # Component metadata
-│   └── accountDetails/        # Account details component
-│       ├── accountDetails.html # Component template
-│       ├── accountDetails.js   # Component JavaScript controller
-│       └── accountDetails.js-meta.xml # Component metadata
+│   ├── accountDetails/        # Account details component
+│   │   ├── accountDetails.html # Component template
+│   │   ├── accountDetails.js   # Component JavaScript controller
+│   │   └── accountDetails.js-meta.xml # Component metadata
+│   └── quoteApproval/         # Quote approval process component
+│       ├── quoteApproval.html  # Component template
+│       ├── quoteApproval.js    # Component JavaScript controller
+│       └── quoteApproval.js-meta.xml # Component metadata
 ├── objects/                   # Custom Objects (empty, ready for expansion)
 ├── tabs/                      # Custom Tabs (empty, ready for expansion)
 └── applications/              # Custom Applications (empty, ready for expansion)
@@ -53,6 +59,17 @@ force-app/main/default/
   - Account scoring algorithm
   - Bulk processing capabilities
 
+#### QuoteController
+- **Purpose**: Provides @AuraEnabled methods for Quote approval process
+- **Key Methods**:
+  - `getQuoteWithShipToContact()` - Retrieves quote with ship-to contact details
+  - `validateQuoteForApproval()` - Validates quote for approval submission
+  - `submitQuoteForApproval()` - Submits quote for approval process
+- **Features**:
+  - Ship-to contact validation
+  - Quote approval workflow
+  - Error handling with detailed messages
+
 ### Lightning Web Components
 
 #### Account List (accountList)
@@ -73,8 +90,19 @@ force-app/main/default/
   - Account score calculation and visualization
   - Related contacts display
   - Navigation integration
-  - Real-time score updates
+  - **Real-time score updates**
   - Responsive design
+
+#### Quote Approval (quoteApproval)
+- **Purpose**: Handles quote approval process with validation
+- **Features**:
+  - Ship-to contact validation
+  - Interactive approval interface
+  - Error messaging for validation failures
+  - Submit button state management
+  - Real-time validation feedback
+  - Integration with quote workflow
+  - Toast notifications for user feedback
 
 ## Deployment
 
@@ -105,6 +133,7 @@ sfdx force:mdapi:deploy -d manifest/
 The project includes comprehensive test classes:
 - **AccountControllerTest**: Tests all controller methods with various scenarios
 - **AccountServiceTest**: Tests business logic and edge cases
+- **QuoteControllerTest**: Tests quote approval validation and submission processes
 
 Both test classes achieve high code coverage and include:
 - Positive test scenarios
@@ -126,6 +155,7 @@ Both test classes achieve high code coverage and include:
 2. Add the Lightning components to your Lightning pages:
    - Add `accountList` component to app pages or home pages
    - Add `accountDetails` component to Account record pages
+   - Add `quoteApproval` component to Quote record pages or as a Quick Action/Record Action
 3. Configure component visibility and permissions as needed
 
 ## Development Notes
