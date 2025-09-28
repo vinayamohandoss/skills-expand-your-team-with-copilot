@@ -1,0 +1,152 @@
+<template>
+    <lightning-card title="Account Details" icon-name="standard:account">
+        <div class="slds-p-horizontal_small">
+            
+            <template if:true={isLoading}>
+                <lightning-spinner 
+                    alternative-text="Loading account details..." 
+                    size="medium">
+                </lightning-spinner>
+            </template>
+
+            <template if:false={isLoading}>
+                <template if:true={account}>
+                    <!-- Account Information Section -->
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Account Information">
+                                Account Information
+                            </span>
+                        </h3>
+                        <div class="slds-section__content">
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Account Name:</dt>
+                                        <dd class="slds-item_detail slds-truncate">{account.Name}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Industry:</dt>
+                                        <dd class="slds-item_detail slds-truncate">{account.Industry}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Phone:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <template if:true={account.Phone}>
+                                                <lightning-formatted-phone value={account.Phone}></lightning-formatted-phone>
+                                            </template>
+                                            <template if:false={account.Phone}>
+                                                <span class="slds-text-color_weak">Not provided</span>
+                                            </template>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Website:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <template if:true={account.Website}>
+                                                <lightning-formatted-url 
+                                                    value={account.Website} 
+                                                    target="_blank">
+                                                </lightning-formatted-url>
+                                            </template>
+                                            <template if:false={account.Website}>
+                                                <span class="slds-text-color_weak">Not provided</span>
+                                            </template>
+                                        </dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Account Score:</dt>
+                                        <dd class="slds-item_detail">
+                                            <lightning-badge label={accountScoreLabel} class={accountScoreClass}>
+                                            </lightning-badge>
+                                        </dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Created Date:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <lightning-formatted-date-time 
+                                                value={account.CreatedDate}
+                                                year="numeric" 
+                                                month="short" 
+                                                day="2-digit">
+                                            </lightning-formatted-date-time>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Contacts Section -->
+                    <div class="slds-section slds-is-open slds-p-top_medium">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Related Contacts">
+                                Related Contacts ({contactCount})
+                            </span>
+                        </h3>
+                        <div class="slds-section__content">
+                            <template if:true={hasContacts}>
+                                <lightning-datatable
+                                    key-field="Id"
+                                    data={account.Contacts}
+                                    columns={contactColumns}
+                                    hide-checkbox-column="true">
+                                </lightning-datatable>
+                            </template>
+                            <template if:false={hasContacts}>
+                                <div class="slds-text-align_center slds-p-vertical_medium">
+                                    <lightning-icon 
+                                        icon-name="utility:info" 
+                                        size="small" 
+                                        alternative-text="No contacts">
+                                    </lightning-icon>
+                                    <p class="slds-text-color_weak slds-p-top_small">
+                                        No contacts found for this account.
+                                    </p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="slds-p-top_medium">
+                        <lightning-button 
+                            label="Calculate Score" 
+                            variant="neutral"
+                            icon-name="utility:refresh"
+                            onclick={calculateScore}
+                            disabled={isCalculating}
+                            class="slds-m-right_small">
+                        </lightning-button>
+                        <lightning-button 
+                            label="View Full Record" 
+                            variant="brand"
+                            icon-name="utility:new_window"
+                            onclick={viewFullRecord}>
+                        </lightning-button>
+                    </div>
+                </template>
+
+                <template if:false={account}>
+                    <div class="slds-text-align_center slds-p-vertical_large">
+                        <lightning-icon 
+                            icon-name="utility:error" 
+                            size="large" 
+                            alternative-text="Error">
+                        </lightning-icon>
+                        <h3 class="slds-text-heading_medium slds-p-top_small">
+                            Account not found
+                        </h3>
+                        <p class="slds-text-color_weak">
+                            The requested account could not be loaded.
+                        </p>
+                    </div>
+                </template>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={error}>
+                <div class="slds-p-top_small">
+                    <lightning-formatted-text 
+                        value={error} 
+                        class="slds-text-color_error">
+                    </lightning-formatted-text>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
