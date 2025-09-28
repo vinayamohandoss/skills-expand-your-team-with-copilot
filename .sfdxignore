@@ -1,0 +1,31 @@
+# List of files to ignore when deploying to a Salesforce org
+# Comments start with #
+
+# LWC configuration files
+**/jsconfig.json
+**/.eslintrc.json
+
+# LWC Jest
+**/__tests__/**
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Salesforce DX
+.sfdx/
+.localdevserver/
+
+# VS Code
+.vscode/

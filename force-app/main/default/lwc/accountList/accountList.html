@@ -1,0 +1,132 @@
+<template>
+    <lightning-card title="Account Management" icon-name="standard:account">
+        <div class="slds-p-horizontal_small">
+            <!-- Search and Filter Section -->
+            <div class="slds-grid slds-wrap slds-gutters slds-p-bottom_small">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input 
+                        type="search" 
+                        label="Search Accounts" 
+                        placeholder="Enter account name..."
+                        value={searchTerm}
+                        onchange={handleSearchChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                        name="limitSelect"
+                        label="Records to Display"
+                        value={selectedLimit}
+                        placeholder="Select limit"
+                        options={limitOptions}
+                        onchange={handleLimitChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="slds-p-bottom_small">
+                <lightning-button 
+                    label="Refresh Data" 
+                    icon-name="utility:refresh"
+                    onclick={refreshData}
+                    class="slds-m-right_small">
+                </lightning-button>
+                <lightning-button 
+                    label="Create Account" 
+                    variant="brand"
+                    icon-name="utility:add"
+                    onclick={openCreateModal}>
+                </lightning-button>
+            </div>
+
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <lightning-spinner 
+                    alternative-text="Loading accounts..." 
+                    size="medium">
+                </lightning-spinner>
+            </template>
+
+            <!-- Account Data Table -->
+            <template if:false={isLoading}>
+                <template if:true={hasAccounts}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={filteredAccounts}
+                        columns={columns}
+                        onrowaction={handleRowAction}
+                        resize-column-disabled="true"
+                        show-row-number-column="true">
+                    </lightning-datatable>
+                </template>
+                
+                <template if:false={hasAccounts}>
+                    <div class="slds-text-align_center slds-p-vertical_large">
+                        <lightning-icon 
+                            icon-name="utility:info" 
+                            size="large" 
+                            alternative-text="No data">
+                        </lightning-icon>
+                        <h3 class="slds-text-heading_medium slds-p-top_small">
+                            No accounts found
+                        </h3>
+                        <p class="slds-text-color_weak">
+                            Try adjusting your search criteria or create a new account.
+                        </p>
+                    </div>
+                </template>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={error}>
+                <div class="slds-p-top_small">
+                    <lightning-formatted-text 
+                        value={error} 
+                        class="slds-text-color_error">
+                    </lightning-formatted-text>
+                </div>
+            </template>
+        </div>
+
+        <!-- Create Account Modal -->
+        <template if:true={showCreateModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">Create New Account</h2>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" 
+                                onclick={closeCreateModal}>
+                            <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        </button>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-input
+                            label="Account Name"
+                            value={newAccountName}
+                            onchange={handleAccountNameChange}
+                            required>
+                        </lightning-input>
+                        <lightning-combobox
+                            label="Industry"
+                            value={newAccountIndustry}
+                            placeholder="Select Industry"
+                            options={industryOptions}
+                            onchange={handleIndustryChange}
+                            class="slds-p-top_small">
+                        </lightning-combobox>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeCreateModal}>
+                            Cancel
+                        </button>
+                        <button class="slds-button slds-button_brand" onclick={createAccount}>
+                            Create Account
+                        </button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>
