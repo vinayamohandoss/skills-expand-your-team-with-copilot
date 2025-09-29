@@ -6,9 +6,9 @@
 public with sharing class QuoteController {
     
     /**
-     * @description Retrieves quote record with ship-to contact details
+     * @description Retrieves quote record with ship-to and bill-to contact details
      * @param quoteId Id of the quote record
-     * @return Quote record with ship-to contact information
+     * @return Quote record with ship-to and bill-to contact information
      */
     @AuraEnabled(cacheable=true)
     public static Quote getQuoteWithShipToContact(Id quoteId) {
@@ -19,7 +19,8 @@ public with sharing class QuoteController {
             
             return [
                 SELECT Id, Name, Status, ShipToContactId, ShipToContact.Name, 
-                       ShipToContact.Email, ShipToContact.Phone, Account.Name
+                       ShipToContact.Email, ShipToContact.Phone, BillToContactId,
+                       BillToContact.Name, BillToContact.Email, BillToContact.Phone, Account.Name
                 FROM Quote 
                 WHERE Id = :quoteId
                 LIMIT 1
@@ -52,6 +53,11 @@ public with sharing class QuoteController {
             // Validate ship-to contact
             if (quote.ShipToContactId == null) {
                 errors.add('Quote must have a Ship To Contact before submitting for approval.');
+            }
+            
+            // Validate bill-to contact
+            if (quote.BillToContactId == null) {
+                errors.add('Quote must have a Bill To Contact before submitting for approval.');
             }
             
             // Add other validation rules as needed
