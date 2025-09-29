@@ -69,25 +69,56 @@ private class QuoteControllerTest {
     }
     
     @isTest
-    static void testValidateQuoteForApproval_WithoutShipToContact() {
+    static void testValidateQuoteForApproval_WithoutContacts() {
         Quote testQuote = [SELECT Id FROM Quote LIMIT 1];
         
         Test.startTest();
         Map<String, Object> result = QuoteController.validateQuoteForApproval(testQuote.Id);
         Test.stopTest();
         
-        System.assertEquals(false, result.get('isValid'), 'Quote should not be valid without ship-to contact');
+        System.assertEquals(false, result.get('isValid'), 'Quote should not be valid without contacts');
         List<String> errors = (List<String>)result.get('errors');
-        System.assert(!errors.isEmpty(), 'Should have validation errors');
-        System.assert(errors[0].contains('Ship To Contact'), 'Should contain ship-to contact error');
+        System.assertEquals(2, errors.size(), 'Should have two validation errors for missing contacts');
+        
+        Boolean hasShipToError = false;
+        Boolean hasBillToError = false;
+        for (String error : errors) {
+            if (error.contains('Ship To Contact')) {
+                hasShipToError = true;
+            }
+            if (error.contains('Bill To Contact')) {
+                hasBillToError = true;
+            }
+        }
+        System.assert(hasShipToError, 'Should contain ship-to contact error');
+        System.assert(hasBillToError, 'Should contain bill-to contact error');
     }
     
     @isTest
-    static void testValidateQuoteForApproval_WithShipToContact() {
+    static void testValidateQuoteForApproval_WithAllContacts() {
         Quote testQuote = [SELECT Id FROM Quote LIMIT 1];
         Contact testContact = [SELECT Id FROM Contact LIMIT 1];
         
-        // Update quote with ship-to contact
+        // Update quote with both ship-to and bill-to contacts
+        testQuote.ShipToContactId = testContact.Id;
+        testQuote.BillToContactId = testContact.Id;
+        update testQuote;
+        
+        Test.startTest();
+        Map<String, Object> result = QuoteController.validateQuoteForApproval(testQuote.Id);
+        Test.stopTest();
+        
+        System.assertEquals(true, result.get('isValid'), 'Quote should be valid with both contacts');
+        List<String> errors = (List<String>)result.get('errors');
+        System.assert(errors.isEmpty(), 'Should have no validation errors');
+    }
+    
+    @isTest
+    static void testValidateQuoteForApproval_WithOnlyShipToContact() {
+        Quote testQuote = [SELECT Id FROM Quote LIMIT 1];
+        Contact testContact = [SELECT Id FROM Contact LIMIT 1];
+        
+        // Update quote with only ship-to contact
         testQuote.ShipToContactId = testContact.Id;
         update testQuote;
         
@@ -95,9 +126,29 @@ private class QuoteControllerTest {
         Map<String, Object> result = QuoteController.validateQuoteForApproval(testQuote.Id);
         Test.stopTest();
         
-        System.assertEquals(true, result.get('isValid'), 'Quote should be valid with ship-to contact');
+        System.assertEquals(false, result.get('isValid'), 'Quote should not be valid with only ship-to contact');
         List<String> errors = (List<String>)result.get('errors');
-        System.assert(errors.isEmpty(), 'Should have no validation errors');
+        System.assertEquals(1, errors.size(), 'Should have one validation error for missing bill-to contact');
+        System.assert(errors[0].contains('Bill To Contact'), 'Should contain bill-to contact error');
+    }
+    
+    @isTest
+    static void testValidateQuoteForApproval_WithOnlyBillToContact() {
+        Quote testQuote = [SELECT Id FROM Quote LIMIT 1];
+        Contact testContact = [SELECT Id FROM Contact LIMIT 1];
+        
+        // Update quote with only bill-to contact
+        testQuote.BillToContactId = testContact.Id;
+        update testQuote;
+        
+        Test.startTest();
+        Map<String, Object> result = QuoteController.validateQuoteForApproval(testQuote.Id);
+        Test.stopTest();
+        
+        System.assertEquals(false, result.get('isValid'), 'Quote should not be valid with only bill-to contact');
+        List<String> errors = (List<String>)result.get('errors');
+        System.assertEquals(1, errors.size(), 'Should have one validation error for missing ship-to contact');
+        System.assert(errors[0].contains('Ship To Contact'), 'Should contain ship-to contact error');
     }
     
     @isTest
@@ -105,8 +156,9 @@ private class QuoteControllerTest {
         Quote testQuote = [SELECT Id FROM Quote LIMIT 1];
         Contact testContact = [SELECT Id FROM Contact LIMIT 1];
         
-        // Update quote with ship-to contact
+        // Update quote with both ship-to and bill-to contacts
         testQuote.ShipToContactId = testContact.Id;
+        testQuote.BillToContactId = testContact.Id;
         update testQuote;
         
         Test.startTest();

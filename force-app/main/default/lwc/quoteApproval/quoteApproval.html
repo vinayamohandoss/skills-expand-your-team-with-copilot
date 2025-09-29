@@ -55,6 +55,19 @@
                                                 <span class="slds-text-color_error">Not specified</span>
                                             </template>
                                         </dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate">Bill To Contact:</dt>
+                                        <dd class="slds-item_detail slds-truncate">
+                                            <template if:true={quote.BillToContact}>
+                                                <lightning-formatted-text value={quote.BillToContact.Name}></lightning-formatted-text>
+                                                <template if:true={quote.BillToContact.Email}>
+                                                    <br>
+                                                    <lightning-formatted-email value={quote.BillToContact.Email}></lightning-formatted-email>
+                                                </template>
+                                            </template>
+                                            <template if:false={quote.BillToContact}>
+                                                <span class="slds-text-color_error">Not specified</span>
+                                            </template>
+                                        </dd>
                                     </dl>
                                 </div>
                             </div>
