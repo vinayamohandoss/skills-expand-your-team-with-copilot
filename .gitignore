@@ -16,6 +16,8 @@ Thumbs.db
 logs
 *.log
 npm-debug.log*
+# But allow specific error.log file for the issue
+!error.log
 
 # Dependency directories
 node_modules/

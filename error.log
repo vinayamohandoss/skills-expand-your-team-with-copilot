@@ -1,0 +1,390 @@
+14:05:08.778 (6778824127)|CUMULATIVE_LIMIT_USAGE_END
+
+14:05:07.900 (6779052363)|CODE_UNIT_FINISHED|OpportunityTrigger on Opportunity trigger event AfterUpdate|__sfdc_trigger/OpportunityTrigger
+14:05:07.900 (6782532317)|DML_END|[197]
+14:05:07.900 (6783917267)|FATAL_ERROR|Internal Salesforce.com Error
+14:05:08.783 (6783943253)|CUMULATIVE_LIMIT_USAGE
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 28 out of 200
+  Number of query rows: 138 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 2 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 2 out of 10000
+  Maximum CPU time: 2156 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|appirio_core|
+  Number of SOQL queries: 1 out of 200
+  Number of query rows: 2108 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|CRMfusionDBR101|
+  Number of SOQL queries: 6 out of 200
+  Number of query rows: 61 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 1 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|LeanData|
+  Number of SOQL queries: 2 out of 200
+  Number of query rows: 19 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|pse|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|refedge|
+  Number of SOQL queries: 13 out of 200
+  Number of query rows: 16 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|rvpe|
+  Number of SOQL queries: 5 out of 200
+  Number of query rows: 6 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|sbaa|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|SBQQ|
+  Number of SOQL queries: 11 out of 200
+  Number of query rows: 36 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 2 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 8 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|LIMIT_USAGE_FOR_NS|TSPC|
+  Number of SOQL queries: 2 out of 200
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.783 (6783943253)|CUMULATIVE_LIMIT_USAGE_END
+
+14:05:07.900 (6784167917)|CODE_UNIT_FINISHED|OpportunityContactRoleTrigger on OpportunityContactRole trigger event AfterInsert|__sfdc_trigger/OpportunityContactRoleTrigger
+14:05:08.808 (6808940255)|DML_END|[160]
+14:05:08.808 (6809152290)|EXCEPTION_THROWN|[160]|System.DmlException: Insert failed. First exception on row 0; first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, OpportunityContactRoleTrigger: maximum trigger depth exceeded
+Contract trigger event AfterUpdate
+OpportunityContactRole trigger event AfterInsert
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate: []
+14:05:08.810 (6810788285)|CUMULATIVE_LIMIT_USAGE
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 27 out of 200
+  Number of query rows: 137 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 1 out of 10000
+  Maximum CPU time: 2133 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|appirio_core|
+  Number of SOQL queries: 1 out of 200
+  Number of query rows: 2108 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|CRMfusionDBR101|
+  Number of SOQL queries: 6 out of 200
+  Number of query rows: 61 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 1 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|LeanData|
+  Number of SOQL queries: 2 out of 200
+  Number of query rows: 19 out of 50000
+  Number of SOQL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|pse|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|refedge|
+  Number of SOQL queries: 13 out of 200
+  Number of query rows: 16 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|rvpe|
+  Number of SOQL queries: 5 out of 200
+  Number of query rows: 6 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|sbaa|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|SBQQ|
+  Number of SOQL queries: 11 out of 200
+  Number of query rows: 36 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 2 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 8 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|LIMIT_USAGE_FOR_NS|TSPC|
+  Number of SOQL queries: 2 out of 200
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:05:08.810 (6810788285)|CUMULATIVE_LIMIT_USAGE_END
+
+14:05:08.866 (6866476433)|DML_END|[14]
+14:05:08.866 (6866737669)|METHOD_ENTRY|[8]|01pb0000004kTt6|ElasticUtilsExceptionManager.ElasticUtilsExceptionManager()
+14:05:08.866 (6866766683)|SYSTEM_MODE_ENTER|true
+14:05:08.866 (6867016446)|SYSTEM_MODE_EXIT|true
+14:05:08.866 (6867044797)|METHOD_EXIT|[8]|ElasticUtilsExceptionManager
+14:05:08.866 (6867063000)|METHOD_ENTRY|[15]|01pb0000004kTt6|ElasticUtilsExceptionManager.handleErrorsForSaveResult(List<Database.SaveResult>, List<SObject>, String, String, String, String)
+14:05:08.866 (6867075720)|SYSTEM_MODE_ENTER|true
+14:05:08.866 (6867204618)|USER_DEBUG|[111]|DEBUG|srsList>>**(Database.SaveResult[getErrors=(Database.Error[getFields=();getMessage=SBQQ.ContractAfter: execution of AfterUpdate
+
+caused by: System.DmlException: Insert failed. First exception on row 0; first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, OpportunityContactRoleTrigger: maximum trigger depth exceeded
+Contract trigger event AfterUpdate
+OpportunityContactRole trigger event AfterInsert
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate: []
+
+(System Code);getStatusCode=CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY;]);getId=null;isSuccess=false;])
+14:05:08.866 (6867410951)|METHOD_ENTRY|[118]|01pb0000004kTt6|ElasticUtilsExceptionManager.handleErrors(Database.Error, SObject, String, String, String, String)
+14:05:08.866 (6868017780)|METHOD_EXIT|[118]|01pb0000004kTt6|ElasticUtilsExceptionManager.handleErrors(Database.Error, SObject, String, String, String, String)
+14:05:08.866 (6868152697)|USER_DEBUG|[121]|DEBUG|errors>>**(Error__c:{Exception_Type__c=CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, Object_Type__c=Contract, Error_Message__c=SBQQ.ContractAfter: execution of AfterUpdate
+
+caused by: System.DmlException: Insert failed. First exception on row 0; first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, OpportunityContactRoleTrigger: maximum trigger depth exceeded
+Contract trigger event AfterUpdate
+OpportunityContactRole trigger event AfterInsert
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate
+Opportunity trigger event AfterUpdate
+OpportunityContactRole trigger event AfterUpdate: []
+
+(System Code), Related_Project__c=[CPQ_ContractRenewal_Batch] Create Contract Renewal Opportunities and Quotes, Short_Description__c=Fields affected :(), Record_ID__c=800Vv00000TTVCmIAP})
+14:05:08.866 (6868288717)|DML_BEGIN|[127]|Op:Insert|Type:Error__c|Rows:1
+14:05:08.866 (6904811541)|DML_END|[127]
+14:05:08.866 (6905178418)|SYSTEM_MODE_EXIT|true
+14:05:08.866 (6906476185)|METHOD_EXIT|[15]|01pb0000004kTt6|ElasticUtilsExceptionManager.handleErrorsForSaveResult(List<Database.SaveResult>, List<SObject>, String, String, String, String)
+14:05:08.866 (6906518716)|METHOD_EXIT|[229]|01p4M000009Lobh|CPQ_UtilityClass.SafeUpdate(List<SObject>, String, String)
+14:05:08.866 (6906777547)|USER_DEBUG|[230]|DEBUG|Contract Renewal Records: (Contract:{Id=800Vv00000TTVCmIAP, Status=Activated, SBQQ__ExpirationDate__c=2028-07-31 00:00:00, Balance_Remaining__c=100.0, SBQQ__Evergreen__c=false, SBQQ__RenewalForecast__c=true, SBQQ__RenewalQuoted__c=true, CreatedDate=2025-07-30 19:05:45})
+14:05:08.866 (6906793200)|SYSTEM_MODE_EXIT|false
+14:05:08.866 (6906883067)|CODE_UNIT_FINISHED|CPQ_ContractRenewal_Batch
+14:05:08.866 (6906898531)|EXECUTION_FINISHED

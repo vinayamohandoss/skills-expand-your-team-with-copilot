@@ -14,7 +14,16 @@ force-app/main/default/
 │   ├── AccountService.*        # Service class for business logic
 │   ├── AccountServiceTest.*    # Test class for AccountService
 │   ├── QuoteController.*       # Controller class for quote operations
-│   └── QuoteControllerTest.*   # Test class for QuoteController
+│   ├── QuoteControllerTest.*   # Test class for QuoteController
+│   ├── TriggerRecursionHelper.* # Utility class for trigger recursion prevention
+│   ├── TriggerRecursionHelperTest.* # Test class for TriggerRecursionHelper
+│   ├── OpportunityTriggerHandler.* # Handler class for Opportunity trigger
+│   ├── OpportunityTriggerHandlerTest.* # Test class for OpportunityTriggerHandler
+│   ├── OpportunityContactRoleTriggerHandler.* # Handler class for OpportunityContactRole trigger
+│   └── OpportunityContactRoleTriggerHandlerTest.* # Test class for OpportunityContactRoleTriggerHandler
+├── triggers/                   # Apex Triggers
+│   ├── OpportunityTrigger.*    # Trigger for Opportunity object with recursion prevention
+│   └── OpportunityContactRoleTrigger.* # Trigger for OpportunityContactRole object with recursion prevention
 ├── lwc/                       # Lightning Web Components
 │   ├── accountList/           # Account list management component
 │   │   ├── accountList.html   # Component template
@@ -70,6 +79,38 @@ force-app/main/default/
   - Quote approval workflow
   - Error handling with detailed messages
 
+#### TriggerRecursionHelper
+- **Purpose**: Utility class to prevent trigger recursion and infinite loops
+- **Key Methods**:
+  - `hasAlreadyRun()` - Tracks trigger execution in current transaction
+  - `isRecursionExceeded()` - Monitors recursion depth limits
+  - `incrementRecursionDepth()` / `decrementRecursionDepth()` - Manages operation depth
+- **Features**:
+  - Operation-specific recursion tracking
+  - Configurable recursion depth limits
+  - Debug logging for recursion prevention
+  - Thread-safe execution tracking
+
+### Apex Triggers
+
+#### OpportunityTrigger
+- **Purpose**: Handles all Opportunity trigger events with recursion prevention
+- **Events**: Before/After Insert, Before/After Update
+- **Features**:
+  - Comprehensive validation (name, close date)
+  - Default contact role creation
+  - Stage-based contact role updates
+  - Recursion prevention using TriggerRecursionHelper
+
+#### OpportunityContactRoleTrigger
+- **Purpose**: Handles all OpportunityContactRole trigger events with recursion prevention
+- **Events**: Before/After Insert, Before/After Update
+- **Features**:
+  - Contact role validation
+  - Opportunity description updates
+  - Change detection for optimized processing
+  - Recursion prevention using TriggerRecursionHelper
+
 ### Lightning Web Components
 
 #### Account List (accountList)
@@ -104,6 +145,30 @@ force-app/main/default/
   - Integration with quote workflow
   - Toast notifications for user feedback
 
+## Trigger Recursion Prevention
+
+This repository includes a comprehensive solution for preventing trigger recursion issues, specifically addressing the "maximum trigger depth exceeded" errors that can occur with interconnected triggers.
+
+### Problem Addressed
+- **Issue**: Circular trigger execution between Opportunity, OpportunityContactRole, and Contract triggers
+- **Error**: `System.DmlException: maximum trigger depth exceeded`
+- **Root Cause**: Triggers updating related records that trigger other triggers in an infinite loop
+
+### Solution Implemented
+- **TriggerRecursionHelper**: Centralized utility for tracking and preventing recursion
+- **Recursion Depth Monitoring**: Configurable limits (default: 3 levels) per operation type
+- **Operation Isolation**: Different trigger operations have separate recursion tracking
+- **Try/Finally Pattern**: Ensures proper cleanup of recursion counters
+- **Comprehensive Logging**: Debug logs help identify and troubleshoot recursion scenarios
+
+### Files Included
+- `error.log`: Original error log showing the recursion issue
+- `TRIGGER_RECURSION_SOLUTION.md`: Detailed technical documentation
+- Trigger files with recursion prevention built-in
+- Comprehensive test coverage for all recursion scenarios
+
+For detailed technical information, see [TRIGGER_RECURSION_SOLUTION.md](TRIGGER_RECURSION_SOLUTION.md).
+
 ## Deployment
 
 ### Prerequisites
@@ -134,13 +199,18 @@ The project includes comprehensive test classes:
 - **AccountControllerTest**: Tests all controller methods with various scenarios
 - **AccountServiceTest**: Tests business logic and edge cases
 - **QuoteControllerTest**: Tests quote approval validation and submission processes
+- **TriggerRecursionHelperTest**: Tests recursion tracking and prevention mechanisms
+- **OpportunityTriggerHandlerTest**: Tests opportunity trigger business logic and validation
+- **OpportunityContactRoleTriggerHandlerTest**: Tests contact role trigger business logic and validation
 
-Both test classes achieve high code coverage and include:
+All test classes achieve high code coverage and include:
 - Positive test scenarios
 - Negative test scenarios
 - Edge case handling
 - Data setup methods
 - Assertion validations
+- Recursion prevention testing
+- Trigger execution flow validation
 
 ## Configuration Files
 
